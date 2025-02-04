@@ -169,6 +169,7 @@ resource "coder_agent" "shopware" {
     bin/console user:create --admin --email=john@doe.com --firstName="John" --lastName="Doe" --password=shopware --no-interaction admin || true
     bin/console user:change-password admin --password shopware || true
     bin/console sales-channel:update:domain 80--shopware--${lower(data.coder_workspace.me.name)}--${lower(data.coder_workspace_owner.me.name)}.cloud.dinited.dev
+    npm cache clean --force
     ./bin/build-administration.sh || true
     ./bin/build-storefront.sh || true
 
