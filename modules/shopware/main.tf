@@ -90,6 +90,13 @@ resource "coder_agent" "shopware" {
 
     ${var.startup_pre_commands}
 
+    # Fix apt repository issues
+    apt-key del 7F438280EF8D349F || true
+    apt-key del 9D6D8F6BC857C906 || true
+    rm -f /etc/apt/sources.list.d/ondrej-ubuntu-php-jammy.list || true
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
     # Prepare user home with default files on first start.
     if [ ! -f ~/.init_done ]; then
       cp -rT /etc/skel ~
