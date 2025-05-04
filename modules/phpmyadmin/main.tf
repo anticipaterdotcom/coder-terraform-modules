@@ -65,8 +65,8 @@ resource "coder_agent" "phpmyadmin" {
     done
 
     # install and start code-server
-    curl -fsSL https://code-server.dev/install.sh | sh -s -- --method=standalone --prefix=/tmp/code-server --version 4.19.1
-    /tmp/code-server/bin/code-server --auth none --port 13338 >/tmp/code-server.log 2>&1 &
+    curl -fsSL https://code-server.dev/install.sh | sh -s -- --method=standalone --prefix=/tmp/code-server --version 4.99.4
+    /tmp/code-server/bin/code-server --auth none --port 13337 >/tmp/code-server.log 2>&1 &
   EOT
 }
 
